@@ -1,0 +1,190 @@
+#Divider {
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+  background-color: gray;
+  text-align: center;
+  padding: 20px;
+}
+
+.NavBar {
+  top: 0;
+  height: 125px;
+  background-color: lightgray;
+}
+
+.LoginScreen {
+  height: 100vh;
+  width: 100vw;
+  background-color: lightgray;
+}
+
+.LoginDetails {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  margin-top: -125px;
+  margin-left: -150px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.tableoverview tr:hover td{
+  background-color: lightskyblue;
+  cursor: pointer;
+}
+
+.tablebody {
+  padding: 16px;
+  margin-bottom: 35px;
+  width: 100%;
+}
+
+.FootBar {
+  bottom: 0;
+  position: fixed;
+  height: 35px;
+  background-color: lightgray;
+  width: 100%;
+}
+
+.btn {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  font-size: 25px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.btn:disabled {
+  cursor:not-allowed;
+}
+
+.dropdown:disabled {
+  cursor:not-allowed;
+}
+
+.rightaligned {
+  float: right;
+}
+
+.inner {
+  display: inline-block;
+}
+
+.cursive {
+  font-style: italic;
+  font-size: 12px
+}
+
+.hideable {
+  width:100%;
+}
+
+.fa-angle-down{
+  transform: rotate(0deg);
+  transition: transform 0.3s linear;
+}
+
+.fa-angle-down.open{
+  transform: rotate(180deg);
+  transition: transform 0.3s linear;
+}
+
+.inputfield{
+  border: 1px;
+  border-color: black;
+  border-style: solid;
+}
+
+.detailsfieldsleft{
+  margin: 20px;
+  margin-right:0px;
+  background-color: lightgray;
+  border:1px black solid;
+  border-radius: 5px;
+}
+
+.detailsfieldscenter{
+  margin: 20px;
+  background-color: lightgray;
+  border:1px black solid;
+  border-radius: 5px;
+}
+
+.DashboardDivs{
+  margin-top:10px;
+  margin-bottom:10px;
+  background-color: lightgray;
+  border:1px black solid;
+  border-radius: 5px;
+}
+
+.detailsfieldsright{
+  margin: 20px;
+  margin-left:0px;
+  background-color: lightgray;
+  border:1px black solid;
+  border-radius: 5px;
+}
+
+.detailsheader{
+padding-left: 25px;
+vertical-align: middle;
+height: 40px;
+font-size: 20px;
+font-weight: 600;
+border-bottom:black 1px solid;
+}
+
+.detailsbody{
+  background-color: white;
+  margin:10px;
+}
+
+.detailsfields{
+  font-size: 12px;
+}
+
+.detailstable{
+  border-bottom: black 1px solid;
+  width: 100%;
+}
+
+.detailstablekey{
+  width:40%;
+  font-weight: 600;
+  padding-left: 15px;
+  vertical-align: text-top;
+  border-right: 2px black solid;
+}
+
+.detailstabledivider{
+font-weight: 600;
+font-style: italic;
+padding-left:5px;
+}
+
+.displaynone:disabled{
+  display: none;
+}
+
+.disableable{
+  border-width: 1px;
+  border-color: black;
+  height: 28px;
+  width:100%;
+  color: black;
+}
+
+.disableable:disabled{
+  border:none;
+  background-color: white;
+  color: black;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}

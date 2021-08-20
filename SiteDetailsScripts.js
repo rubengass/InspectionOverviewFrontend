@@ -158,69 +158,39 @@ function ValidateFieldInput() {
     return Validated;
 }
 
-function GetContractManagersForDepartment() {
-    fetch("https://localhost:44374/api/FormData/" + document.getElementById("DepartmentName").value, {
-        headers: {
-            "Authorization": localStorage.getItem('AuthenticationKey')
-        }
-        })
-        .then(response => response.json())
-        .then(data => {
-            let option = '';
-            data.forEach(function (UnpackedJson) {
-                allContractManagers = Object.values(UnpackedJson.contractManagers);
-                select = document.getElementById('ContractManagerName');
-                var length = select.options.length;
-                for (i = length - 1; i >= 0; i--) {
-                    select.options[i] = null;
-                }
-                allContractManagers.forEach(function (ContractManager) {
-                    ins = document.createElement('option');
-                    ins.value = ContractManager.contractManagerName;
-                    ins.innerHTML = ContractManager.contractManagerName;
-                    select.appendChild(ins);
-                });
-            });
-        })
-        .catch(error => {
-            console.error(error);
-        });
-}
-
 function GetSiteDetails() {
     fetch("https://localhost:44374/api/SiteData/" + document.getElementById("SiteID").value, {
-        headers: {
-            "Authorization": localStorage.getItem('AuthenticationKey')
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey')
             }
         })
         .then(response => response.json())
         .then(returndata => {
-            if(returndata.success)
-            {
-            document.getElementById("SiteName").value = returndata.data.siteName;
-            document.getElementById("PageHeader").innerHTML = returndata.data.siteName;
-            document.getElementById("SiteActiveSince").value = isoFormatDMY(new Date(returndata.data.siteActiveSince));
-            document.getElementById("ContractActiveFrom").value = isoFormatDMY(new Date(returndata.data.siteContractStart));
-            document.getElementById("ContractActiveTill").value = isoFormatDMY(new Date(returndata.data.siteContractEnd));
-            document.getElementById("SiteCity").value = returndata.data.siteAddressCity;
-            document.getElementById("SiteCountry").value = returndata.data.siteAddressCountry;
-            document.getElementById("SiteLine1").value = returndata.data.siteAddressPostal;
-            document.getElementById("SiteLine2").value = returndata.data.siteAddressStreet;
-            document.getElementById("SiteContact").value = returndata.data.siteContactName;
-            document.getElementById("SiteContactEmail").value = returndata.data.siteContactEmail;
-            document.getElementById("ContractManagerName").value = returndata.data.contractManager.contractManagerName;
-            document.getElementById("ContractManagerEmail").value = returndata.data.contractManager.contractManagerEmail;
-            document.getElementById("ContractManagerID").value = returndata.data.contractManager.contractManagerID;
-            document.getElementById("DepartmentID").value = returndata.data.contractManager.department.departmentID;
-            document.getElementById("Department").value = returndata.data.contractManager.department.departmentName;
-            document.getElementById("CustomerName").value = returndata.data.customer.customerName;
-            document.getElementById("CustomerID").value = returndata.data.customer.customerID;
-            document.getElementById("CustomerContact").value = returndata.data.customer.customerContactName;
-            document.getElementById("CustomerContactEmail").value = returndata.data.customer.customerContactEmail;
-            document.getElementById("CustomerAddressCountry").value = returndata.data.customer.customerAddressCountry;
-            document.getElementById("CustomerAddressCity").value = returndata.data.customer.customerAddressCity;
-            document.getElementById("CustomerAddressLine1").value = returndata.data.customer.customerAddressPostal;
-            document.getElementById("CustomerAddressLine2").value = returndata.data.customer.customerAddressStreet;
+            if (returndata.success) {
+                document.getElementById("SiteName").value = returndata.data.siteName;
+                document.getElementById("PageHeader").innerHTML = returndata.data.siteName;
+                document.getElementById("SiteActiveSince").value = isoFormatDMY(new Date(returndata.data.siteActiveSince));
+                document.getElementById("ContractActiveFrom").value = isoFormatDMY(new Date(returndata.data.siteContractStart));
+                document.getElementById("ContractActiveTill").value = isoFormatDMY(new Date(returndata.data.siteContractEnd));
+                document.getElementById("SiteCity").value = returndata.data.siteAddressCity;
+                document.getElementById("SiteCountry").value = returndata.data.siteAddressCountry;
+                document.getElementById("SiteLine1").value = returndata.data.siteAddressPostal;
+                document.getElementById("SiteLine2").value = returndata.data.siteAddressStreet;
+                document.getElementById("SiteContact").value = returndata.data.siteContactName;
+                document.getElementById("SiteContactEmail").value = returndata.data.siteContactEmail;
+                document.getElementById("ContractManagerName").value = returndata.data.contractManager.contractManagerName;
+                document.getElementById("ContractManagerEmail").value = returndata.data.contractManager.contractManagerEmail;
+                document.getElementById("ContractManagerID").value = returndata.data.contractManager.contractManagerID;
+                document.getElementById("DepartmentID").value = returndata.data.contractManager.department.departmentID;
+                document.getElementById("Department").value = returndata.data.contractManager.department.departmentName;
+                document.getElementById("CustomerName").value = returndata.data.customer.customerName;
+                document.getElementById("CustomerID").value = returndata.data.customer.customerID;
+                document.getElementById("CustomerContact").value = returndata.data.customer.customerContactName;
+                document.getElementById("CustomerContactEmail").value = returndata.data.customer.customerContactEmail;
+                document.getElementById("CustomerAddressCountry").value = returndata.data.customer.customerAddressCountry;
+                document.getElementById("CustomerAddressCity").value = returndata.data.customer.customerAddressCity;
+                document.getElementById("CustomerAddressLine1").value = returndata.data.customer.customerAddressPostal;
+                document.getElementById("CustomerAddressLine2").value = returndata.data.customer.customerAddressStreet;
             } else {
                 ProcessErrors(returndata.errorCodes, returndata.responseMessage);
             }
@@ -237,36 +207,37 @@ function isoFormatDMY(d) {
     return pad(d.getUTCFullYear()) + '-' + pad(d.getUTCMonth() + 1) + '-' + pad(d.getUTCDate() + 1);
 }
 
-function FetchDropdownData(){
-    fetch("https://localhost:44374/api/FormData")
-    .then(response => response.json())
-    .then(data => {
-      let option = '';
-      data.forEach(function (UnpackedJson) {
-      allDepartments = Object.values(UnpackedJson.departments);
-      select = document.getElementById('ContractManagerName');
-      allDepartments.forEach(function (Department) {
-          OptGroup = document.createElement('optgroup');
-          OptGroup.label = Department.departmentName;
-        Department.contractManagers.forEach(function (ContractManager){
-            ins = document.createElement('option');
-            ins.value = ContractManager.contractManagerName;
-            ins.innerHTML = ContractManager.contractManagerName;
-            OptGroup.appendChild(ins);
+function FetchDropdownData() {
+    fetch("https://localhost:44374/api/FormData", {
+            headers: {
+                "Authorization": localStorage.getItem('AuthenticationKey')
+            }
+        })
+        .then(response => response.json())
+        .then(returndata => {
+            let option = '';
+            select = document.getElementById('ContractManagerName');
+            returndata.data.departments.forEach(function (Department) {
+                OptGroup = document.createElement('optgroup');
+                OptGroup.label = Department.departmentName;
+                Department.contractManagers.forEach(function (ContractManager) {
+                    ins = document.createElement('option');
+                    ins.value = ContractManager.contractManagerName;
+                    ins.innerHTML = ContractManager.contractManagerName;
+                    OptGroup.appendChild(ins);
+                });
+                select.appendChild(OptGroup);
+            });
+            GetSiteDetails();
+        })
+        .catch(error => {
+            console.error(error);
         });
-        select.appendChild(OptGroup);
-      });
-    });
-  })
-  .catch(error => {
-    console.error(error);
-  });
 }
 
 function SaveChangesInternalDetails() {
     let dataReceived = "";
     var myJSON = "{\"contractManager\": {\"contractManagerName\": \"" + document.getElementById("ContractManagerName").value + "\"}}"
-    console.log(myJSON);
     fetch("https://localhost:44374/api/SiteData/" + document.getElementById("SiteID").value, {
             method: "put",
             headers: {

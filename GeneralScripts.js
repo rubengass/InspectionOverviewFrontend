@@ -2,6 +2,10 @@ function GoToHome() {
     window.location.href = 'index.html';
 }
 
+function GoToCustomView() {
+    window.location.href = 'CustomView.html';
+}
+
 function GoToOverview() {
     window.location.href = 'SiteOverview.html';
 }
@@ -24,7 +28,7 @@ function SendAuthenticationKey() {
     fetch("https://localhost:44374/api/login/"+localStorage.getItem('AuthenticationKey'))
         .then(response => response.text())
         .then(body => {
-            alert(body)
+            alert(body.success)
         })
         .catch(error => {
             console.error(error);

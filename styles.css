@@ -19,6 +19,10 @@
   background-color: lightgray;
 }
 
+body{
+  padding-bottom: 40px;
+}
+
 .LoginDetails {
   position: absolute;
   top: 50%;
@@ -31,7 +35,12 @@
   padding: 25px;
 }
 
-.tableoverview tr:hover td{
+.tableoverview tr:hover td {
+  background-color: lightskyblue;
+  cursor: pointer;
+}
+
+.Selected {
   background-color: lightskyblue;
   cursor: pointer;
 }
@@ -61,11 +70,11 @@
 }
 
 .btn:disabled {
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 
 .dropdown:disabled {
-  cursor:not-allowed;
+  cursor: not-allowed;
 }
 
 .rightaligned {
@@ -82,109 +91,129 @@
 }
 
 .hideable {
-  width:100%;
+  width: 100%;
 }
 
-.fa-angle-down{
+.fa-angle-down {
   transform: rotate(0deg);
   transition: transform 0.3s linear;
 }
 
-.fa-angle-down.open{
+.fa-angle-down.open {
   transform: rotate(180deg);
   transition: transform 0.3s linear;
 }
 
-.inputfield{
+.inputfield {
   border: 1px;
   border-color: black;
   border-style: solid;
 }
 
-.detailsfieldsleft{
+.detailsfieldsleft {
   margin: 20px;
-  margin-right:0px;
+  margin-right: 0px;
   background-color: lightgray;
-  border:1px black solid;
+  border: 1px black solid;
   border-radius: 5px;
 }
 
-.detailsfieldscenter{
+.detailsfieldscenter {
   margin: 20px;
   background-color: lightgray;
-  border:1px black solid;
+  border: 1px black solid;
   border-radius: 5px;
 }
 
-.DashboardDivs{
-  margin-top:10px;
-  margin-bottom:10px;
+.DashboardDivs {
+  margin-top: 10px;
+  margin-bottom: 10px;
   background-color: lightgray;
-  border:1px black solid;
+  border: 1px black solid;
   border-radius: 5px;
 }
 
-.detailsfieldsright{
+.detailsfieldsright {
   margin: 20px;
-  margin-left:0px;
+  margin-left: 0px;
   background-color: lightgray;
-  border:1px black solid;
+  border: 1px black solid;
   border-radius: 5px;
 }
 
-.detailsheader{
-padding-left: 25px;
-vertical-align: middle;
-height: 40px;
-font-size: 20px;
-font-weight: 600;
-border-bottom:black 1px solid;
+.detailsheader {
+  padding-left: 25px;
+  vertical-align: middle;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: black 1px solid;
 }
 
-.detailsbody{
+.detailsbody {
   background-color: white;
-  margin:10px;
+  margin: 10px;
 }
 
-.detailsfields{
+.detailsfields {
   font-size: 12px;
 }
 
-.detailstable{
+.detailstable {
   border-bottom: black 1px solid;
   width: 100%;
 }
 
-.detailstablekey{
-  width:40%;
+.detailstablekey {
+  width: 40%;
   font-weight: 600;
   padding-left: 15px;
   vertical-align: text-top;
   border-right: 2px black solid;
 }
 
-.detailstabledivider{
-font-weight: 600;
-font-style: italic;
-padding-left:5px;
+.detailstabledivider {
+  font-weight: 600;
+  font-style: italic;
+  padding-left: 5px;
 }
 
-.displaynone:disabled{
+.ElementsTable {
+  padding: 0px;
+}
+
+.ElementsTable tr {
+  border: 1px black solid;
+}
+
+.displaynone:disabled {
   display: none;
 }
 
-.disableable{
+.disableable {
   border-width: 1px;
   border-color: black;
   height: 28px;
-  width:100%;
+  width: 100%;
   color: black;
 }
 
-.disableable:disabled{
-  border:none;
+.disableable:disabled {
+  border: none;
   background-color: white;
   color: black;
   -moz-appearance: none;
   -webkit-appearance: none;
+}
+
+.aligncenter {
+vertical-align: middle;
+}
+
+#CustomReport th {
+  cursor: pointer;
+}
+
+.ToggleAvailability{
+  display: block;
 }

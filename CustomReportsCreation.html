@@ -7,7 +7,7 @@
     <meta name="description" content="InspectionOverview">
     <meta name="author" content="">
 
-    <title>Inspection Overview</title>
+    <title>Create new custom report</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/">
     <link rel="stylesheet" href="styles.css">
@@ -15,11 +15,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="CustomViewScripts.js"></script>
+    <script src="CustomReportsScripts.js"></script>
     <script src="GeneralScripts.js"></script>
 </head>
 
-<body onload="GetReportElements();">
+<body onload="GetReportElements(); ToggleReportManagementVisibility();">
     <div class="container-fluid">
         <div class="row NavBar">
             <div class="col-8">
@@ -28,13 +28,22 @@
                 </div>
                 <div>
                     <h2>Custom Reporting</h2>
+                    <button class="btn inner" onclick="GoToCustomReportsOverview();"><i class="fa fa-arrow-left"></i> Go
+                        back to overview</button>
                 </div>
             </div>
             <div class="col-4" style="position:relative;">
                 <button class="btn rightaligned" onclick="Logout();"><i class="fa fa-sign-out"></i> Logout</button>
                 <div style="position:absolute; bottom:5px; right:5px;">
-                    <button class="btn" onclick="ToggleReportElementsVisibility()"><i id="icon" class="fa fa-angle-down"></i>
-                        Report Elements</button>
+                    <button class="btn" onclick="ToggleReportElementsVisibility()"><i id="icon"
+                            class="fa fa-angle-down"></i>
+                        Add report elements</button>
+                    <button class="btn" onclick="ToggleFiltersVisibility()"><i id="icon"
+                            class="fa fa-angle-down"></i>
+                        Apply filters</button>
+                    <button class="btn" onclick="ToggleReportManagementVisibility()"><i id="icon"
+                            class="fa fa-angle-down"></i>
+                        Manage report</button>
                 </div>
             </div>
         </div>
@@ -46,12 +55,17 @@
                     <tbody></tbody>
                 </table>
             </div>
-            <div class="ToggleAvailability detailsfieldsright" style="position: absolute; right: 0px;">
+            <div class="ToggleAvailabilityElements detailsfieldsright"
+                style="position: absolute; right: 0px; padding-bottom:60px;width:550px;">
                 <div class="row">
-                    <button class="btn rightaligned" onclick="RunReport();"><i class="fa fa-check"></i> Run custom report</button>
-                    <label for="KPI">Count:</label>
-                    <select class="dropdown" name="KPI" id="KPI">
-                    </select>
+                    <div class="col-6">
+                        <button class="btn" onclick="RunReport();"><i class="fa fa-check"></i> Run preview</button>
+                    </div>
+                    <div class="col-6">
+                        <label for="KPI">Count:</label>
+                        <select class="dropdown" name="KPI" id="KPI">
+                        </select>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-5">
@@ -80,6 +94,36 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+            <div class="ToggleAvailabilityFilters detailsfieldsright"
+                style="position: absolute; right: 0px; padding-bottom:60px;width:400px;display:none;">
+                <div class="row" style="margin:5px;">
+                        <button class="btn" onclick="RunReport();"><i class="fa fa-check"></i> Run preview</button>
+                </div>
+                <div class="row" style="margin:5px;">
+                    <table id="FiltersTable" style="width:100%;">
+                        <tbody id="FilterTableBody">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ToggleAvailabilityManagement detailsfieldsright col-4"
+                style="position: absolute; right: 0px; padding-bottom:60px;width:300px;">
+                <div class="row" style="padding-left: 10px;">
+                    <label for="ReportType">Report type:</label>
+                    <select class="dropdown" name="ReportType" id="ReportType">
+                        <option value="Static">Static</option>
+                        <option value="Dynamic">Dynamic</option>
+                    </select> </div>
+                <div class="row" style="padding-left: 10px;">
+                    <label for="ReportName">Report Name:</label><br>
+                    <input type="text" id="ReportName"><br>
+                </div>
+                <div class="row">
+                    <button class="btn" onclick="SubmitNewReport();"><i class="fa fa-save"></i> Save the current
+                        report</button>
                 </div>
             </div>
         </div>

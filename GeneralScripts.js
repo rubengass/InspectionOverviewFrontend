@@ -2,8 +2,18 @@ function GoToHome() {
     window.location.href = 'index.html';
 }
 
-function GoToCustomView() {
-    window.location.href = 'CustomView.html';
+function GoToCustomReportsCreation() {
+    window.location.href = 'CustomReportsCreation.html';
+}
+
+function GoToCustomReportsOverview() {
+    window.location.href = 'CustomReportsOverview.html';
+}
+
+function GoToCustomReportPreview(TableName, ReportName) {
+    localStorage.setItem('TableName', TableName);
+    localStorage.setItem('ReportName', ReportName);
+    window.location.href = 'CustomReportPreview.html';
 }
 
 function GoToOverview() {
@@ -22,17 +32,6 @@ function GoToDetails(siteID, siteName) {
     localStorage.setItem('SiteID', siteID)
     localStorage.setItem('SiteName',siteName)
     window.location.href = 'SiteDetails.html';
-}
-
-function SendAuthenticationKey() {
-    fetch("https://localhost:44374/api/login/"+localStorage.getItem('AuthenticationKey'))
-        .then(response => response.text())
-        .then(body => {
-            alert(body.success)
-        })
-        .catch(error => {
-            console.error(error);
-        });
 }
 
 function Login() {
